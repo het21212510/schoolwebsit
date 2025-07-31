@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #5d043f;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-container {
+      display: flex;
+      background-color: #6b0d4d;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 900px;
+      width: 100%;
+      gap: 50px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-left {
+      flex: 1;
+    }
+
+    .contact-left h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .contact-left p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .contact-left div {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .contact-right {
+      flex: 1;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #fff;
+      color: #333;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      color: white;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #fff;
+      cursor: pointer;
+    }
+
+    .checkbox-container label {
+      display: inline;
+      cursor: pointer;
+    }
+
+    .checkbox-container a {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+
+    button {
+      background-color: white;
+      color: #5d043f;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-container">
+    <div class="contact-left">
+      <h2>Contact us</h2>
+      <p>Register for daily updates</p>
+      <div>📧 hello@yourdomain.com</div>
+      <div>📞 +91 99999-99999</div>
+      <div>📍 123 Main St, YourCity, IN</div>
+    </div>
+
+    <div class="contact-right">
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Type your message..." required></textarea>
+
+        <div class="checkbox-container">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">
+            I accept the <a href="#">Terms</a>
+          </label>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const terms = document.getElementById('terms').checked;
+
+      if (!name || !email || !message || !terms) {
+        alert('Please fill all fields and accept the terms.');
+        return;
+      }
+
+      alert('Thank you for contacting us, ' + name + '!');
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

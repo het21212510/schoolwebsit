@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Portal - ABC School</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e0825;
+      color: white;
+    }
+
+    header {
+      background-color: #a30569;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      color: white;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .card {
+      background: #311528;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background-color: #4a1b39;
+    }
+
+    .card h3 {
+      color: #ffaadc;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 14px;
+    }
+
+    .card ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #522741;
+    }
+
+    .card ul li:last-child {
+      border-bottom: none;
+    }
+
+    .card a {
+      color: #ffd2ec;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #140415;
+      font-size: 13px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🎓 ABC School - Student Portal</header>
+
+  <div class="dashboard">
+    <!-- Announcements -->
+    <div class="card">
+      <h3>📢 Announcements</h3>
+      <ul>
+        <li>📅 Mid-term Exams start from 15th August.</li>
+        <li>📚 Library week starts next Monday.</li>
+        <li>🏆 Inter-house Sports begins 1st Sept.</li>
+      </ul>
+    </div>
+
+    <!-- Download Materials -->
+    <div class="card">
+      <h3>📥 Download Materials</h3>
+      <ul>
+        <li><a href="#">📘 Math Notes - Chapter 5</a></li>
+        <li><a href="#">📗 Science Lab Manual PDF</a></li>
+        <li><a href="#">📕 English Poem Worksheet</a></li>
+      </ul>
+    </div>
+
+    <!-- Schedule -->
+    <div class="card">
+      <h3>🕒 Class Schedule</h3>
+      <ul>
+        <li>Mon: Math, English, Computer</li>
+        <li>Tue: Science, Hindi, PE</li>
+        <li>Wed: Social Studies, Math, Library</li>
+      </ul>
+    </div>
+
+    <!-- Grades -->
+    <div class="card">
+      <h3>📊 Grades</h3>
+      <ul>
+        <li>Math: 88%</li>
+        <li>Science: 92%</li>
+        <li>English: 85%</li>
+        <li>Social Studies: 90%</li>
+      </ul>
+    </div>
+
+    <!-- Attendance -->
+    <div class="card">
+      <h3>🧾 Attendance</h3>
+      <ul>
+        <li>Present Days: 82</li>
+        <li>Total Working Days: 90</li>
+        <li>Attendance Percentage: 91.1%</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>© 2025 ABC Public School. All rights reserved.</footer>
+
+</body>
+</html>

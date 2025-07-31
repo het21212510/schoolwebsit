@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ABC Public School</title>
+  <style>
+    /* Responsive Design for All Devices */
+    @media (max-width: 1200px) {
+      .navbar, .join-section, .welcome, .activities-section, .footer {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .activities-grid {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 900px) {
+      .navbar {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .join-section, .welcome, .activities-section, .footer {
+        flex-direction: column;
+        padding: 30px 10px;
+      }
+      .welcome-img {
+        margin-top: 20px;
+      }
+      .activities-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .activity-card {
+        height: 180px;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .join-section, .welcome, .activities-section, .footer {
+        flex-direction: column;
+        padding: 18px 4px;
+        margin: 18px auto;
+        border-radius: 12px;
+      }
+      .join-buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: stretch;
+      }
+      .join-text {
+        text-align: center;
+        max-width: 100%;
+      }
+      .welcome {
+        flex-direction: column;
+        padding: 18px 4px;
+      }
+      .welcome-text {
+        padding-right: 0;
+      }
+      .welcome-img {
+        margin-top: 10px;
+      }
+      .activities-section {
+        padding: 18px 4px;
+      }
+      .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .activity-card {
+        height: 120px;
+      }
+      .footer {
+        flex-direction: column;
+        padding: 18px 4px;
+      }
+      .footer-column {
+        margin: 8px 0;
+      }
+      .banner-img {
+        height: 220px;
+        min-height: 120px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+    }
+    @media (max-width: 400px) {
+      .banner-img {
+        width: 100vw;
+        height: 140px;
+        min-height: 80px;
+        object-fit: cover;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+      .join-section, .welcome, .activities-section, .footer {
+        padding: 10px 2px;
+        margin: 10px auto;
+        border-radius: 6px;
+      }
+      .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .activity-card {
+        height: 60px;
+      }
+      .footer-column {
+        margin: 4px 0;
+      }
+    }
+    @media (max-width: 220px) {
+      .banner-img {
+        width: 100vw;
+        height: 60px;
+        min-height: 40px;
+        object-fit: cover;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+      .join-section, .welcome, .activities-section, .footer {
+        padding: 4px 1px;
+        margin: 4px auto;
+        border-radius: 2px;
+      }
+      .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+      .activity-card {
+        height: 30px;
+      }
+      .footer-column {
+        margin: 2px 0;
+      }
+    }
+   
+
+       body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #eee;
+    }
+
+    header {
+      background-color: #5d043f;
+      padding: 15px 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .left-nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+    }
+
+    .logo h1 {
+      font-size: 22px;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #f0a;
+    }
+
+    .login-dropdown {
+      position: relative;
+    }
+
+    .login-button {
+      background-color: #d10787;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .login-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      color: black;
+      min-width: 160px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .login-dropdown-content a {
+      color: #333;
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .login-dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .login-dropdown:hover .login-dropdown-content {
+      display: block;
+    }
+
+    .banner-img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    .join-section {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: #1e0f1a;
+    }
+
+    .join-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .join-buttons .button {
+      background-color: #d10787;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      width: 150px;
+    }
+
+    .join-buttons .button:hover {
+      background-color: #a30569;
+    }
+
+    .join-text {
+      max-width: 600px;
+      text-align: right;
+    }
+
+    .join-text h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ffcff0;
+    }
+
+    .join-text p {
+      font-size: 16px;
+      color: #e6b8d1;
+    }
+
+    .welcome {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      background: #2a1121;
+      color: #f5dff0;
+    }
+
+    .welcome-text {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .welcome-img {
+      flex: 1;
+      text-align: center;
+    }
+
+    .welcome-img img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .activities-section {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.activities-title {
+  font-size: 28px;
+  color: #300224;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.activity-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.activity-card:hover {
+  transform: scale(1.03);
+}
+
+.activity-card .label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(93, 4, 63, 0.7); /* purple overlay */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+    .footer {
+      background-color: #1c0f19;
+      color: #ddd;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+      margin: 20px;
+    }
+
+    .footer-column h4 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .footer-column ul li a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .footer-column ul li a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin-top: 20px;
+      border-top: 1px solid #333;
+      padding-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header + Navbar -->
+  <header>
+    <div class="navbar">
+      <div class="left-nav">
+        <div class="logo">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.r-V0mO21MZnLfGJrDQKk0wHaHa?pid=Api&P=0&h=180" alt="School Logo">
+          <h1>ABC Public School</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Login Dropdown -->
+      <div class="login-dropdown">
+        <button class="login-button">Login</button>
+        <div class="login-dropdown-content">
+          <a href="studentlogin.html">Student Login</a>
+          <a href="parentlogin.html">Parent Login</a>
+          <a href="teacherlogin.html">Teacher Login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Image -->
+  <img src="banner.jpg" alt="Banner" class="banner-img" />
+
+  <!-- Join Section (Now pushed down) -->
+  <section class="join-section">
+    <div class="join-buttons">
+      <button class="button">Admissions</button>
+      <button class="button">Learn More</button>
+    </div>
+    <div class="join-text">
+      <h2>Join Us</h2>
+      <p>Where Learning Meets Excellence</p>
+    </div>
+  </section>
+
+  <!-- Welcome Section -->
+  <section class="welcome">
+    <div class="welcome-text">
+      <h2>Welcome to ABC Public School</h2>
+      <p>We are committed to nurturing students through a balanced and inclusive curriculum. Our aim is to foster critical thinkers and responsible global citizens.</p>
+      <p>Our school provides rich academic experiences, co-curricular excellence, and a safe, inclusive environment. We invite you to be part of our future-focused journey.</p>
+    </div>
+    <div class="welcome-img">
+      <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc" alt="School Building">
+    </div>
+  </section>
+  <section class="activities-section">
+  <h2 class="activities-title">ACTIVITIES</h2>
+  <div class="activities-grid">
+    <div class="activity-card" style="background-image: url('images/smartclass.png');">
+      <div class="label">SMART CLASSES</div>
+    </div>
+    <div class="activity-card" style="background-image: url('images/lab.png');">
+      <div class="label">SCIENTIFIC LABS</div>
+    </div>
+    <div class="activity-card" style="background-image: url('images/seminar.png');">
+      <div class="label">SEMINAR HALLS</div>
+    </div>
+    <div class="activity-card" style="background-image: url('images/auditorium.png');">
+      <div class="label">AUDITORIUM</div>
+    </div>
+    <div class="activity-card" style="background-image: url('images/library.png');">
+      <div class="label">LIBRARIES</div>
+    </div>
+    <div class="activity-card" style="background-image: url('images/kids.png');">
+      <div class="label">KINDERGARTENS</div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-column">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#">Primary Years</a></li>
+        <li><a href="#">Middle Years</a></li>
+        <li><a href="#">Diploma Programme</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Smart Classes</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Auditoriums</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>About Us</h4>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Help/Support</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 2025 ABC Public School. All rights reserved | Privacy | Terms | Cookie Settings
+    </div>
+  </footer>
+
+</body>
+</html>
